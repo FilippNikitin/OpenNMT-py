@@ -131,11 +131,11 @@ def model_opts(parser):
     # Generator and loss options.
     group.add_argument('-copy_attn', action="store_true",
                        help='Train copy attention layer.')
-    group.add_argument('-generator_function', default="log_softmax",
-                       choices=["log_softmax", "sparsemax"],
+    group.add_argument('-generator_function', default="softmax",
+                       choices=["softmax", "sparsemax"],
                        help="""Which function to use for generating
                        probabilities over the target vocabulary (choices:
-                       log_softmax, sparsemax)""")
+                       softmax, sparsemax)""")
     group.add_argument('-copy_attn_force', action="store_true",
                        help='When available, train to copy.')
     group.add_argument('-reuse_copy_attn', action="store_true",
@@ -455,6 +455,13 @@ def translate_opts(parser):
                        help='Path to model .pt file(s). '
                             'Multiple models can be specified, '
                             'for ensemble decoding.')
+    group.add_argument('-avg_raw_probs', action='store_true',
+                       help="""If this is set, during ensembling scores from
+                       different models will be combined by averaging their
+                       raw probabilities and then taking the log. Otherwise,
+                       the log probabilities will be averaged directly.
+                       Necessary for models whose output layers can assign
+                       zero probability.""")
 
     group = parser.add_argument_group('Data')
     group.add_argument('-data_type', default="text",
