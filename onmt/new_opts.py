@@ -57,7 +57,7 @@ class Opts(object):
         self.feat_vec_exponent = feat_vec_exponent
         self.feat_vec_size = feat_vec_size
         self.fix_word_vecs_dec = fix_word_vecs_dec
-        self.fix_word_vecs_enc =  fix_word_vecs_enc
+        self.fix_word_vecs_enc = fix_word_vecs_enc
         self.generator_function = generator_function
         self.global_attention = global_attention
         self.global_attention_function = global_attention_function
@@ -178,6 +178,86 @@ class PreprocessorOpts(object):
         self.seed = seed
         self.report_every = report_every
         self.log_file = log_file
+        self.sample_rate = sample_rate
+        self.window_size = window_size
+        self.window_stride = window_stride
+        self.window = window
+        self.image_channel_size = image_channel_size
+
+
+class TranslateOpts:
+    """ Translation / inference options """
+    def __init__(self,
+                 #model,
+                 src,
+                 models=[],
+                 avg_raw_probs=True,
+                 data_type="text",
+                 src_dir="",
+                 tgt="",
+                 output="pred.txt",
+                 report_bleu=False,
+                 report_rouge=False,
+                 dynamic_dict=False,
+                 share_vocab=False,
+                 fast=False,
+                 beam_size=5,
+                 min_length=0,
+                 max_tength=100,
+                 max_sent_lenght=100,
+                 stepwise_penalty=True,
+                 length_penalty='none',
+                 covearge_penalty='none',
+                 alpha=0.,
+                 beta=-0.,
+                 block_ngram_repeat=0.,
+                 ignore_when_blocking=[],
+                 replace_unk=False,
+                 verbose=True,
+                 log_file="",
+                 attn_debug=False,
+                 dump_baem="",
+                 n_best=1,
+                 batch_size=30,
+                 gpu=-1,
+                 sample_rate=16000,
+                 window_size=.02,
+                 window_stride=0.01,
+                 window="hamming",
+                 image_channel_size=3
+                 ):
+        #self.model = model
+        self.avg_raw_probs = avg_raw_probs
+        self.data_type = data_type
+        self.models = models
+        self.src = src
+        self.src_dir = src_dir
+        self.tgt = tgt
+        self.output = output
+        self.report_bleu = report_bleu
+        self.report_rouge = report_rouge
+        self.dynamic_dict = dynamic_dict
+        self.share_vocab = share_vocab
+        self.fast = fast
+        self.beam_size = beam_size
+        self.min_length = min_length
+        self.max_tength = max_tength
+        self.max_sent_lenght = max_sent_lenght
+        self.stepwise_penalty = stepwise_penalty
+        self.length_penalty = length_penalty
+        self.covearge_penalty = covearge_penalty
+        self.alpha = alpha
+        self.beta = beta
+        self.block_ngram_repeat = block_ngram_repeat
+        self.ignore_when_blocking = ignore_when_blocking
+        self.replace_unk = replace_unk
+        self.verbose = verbose
+        self.log_file = log_file
+        self.attn_debug = attn_debug
+        self.dump_baem = dump_baem
+        self.n_best = n_best
+        self.batch_size = batch_size
+        self.gpu = gpu
         self.sample_rate = sample_rate
         self.window_size = window_size
         self.window_stride = window_stride

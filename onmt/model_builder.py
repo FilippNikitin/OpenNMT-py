@@ -135,9 +135,8 @@ def load_test_model(opt, dummy_opt, model_path=None):
         checkpoint['vocab'], data_type=opt.data_type)
 
     model_opt = checkpoint['opt']
-
     for arg in dummy_opt:
-        if arg not in model_opt:
+        if arg not in vars(model_opt):
             model_opt.__dict__[arg] = dummy_opt[arg]
     model = build_base_model(model_opt, fields, use_gpu(opt), checkpoint)
     model.eval()
