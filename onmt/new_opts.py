@@ -203,11 +203,11 @@ class TranslateOpts:
                  fast=False,
                  beam_size=5,
                  min_length=0,
-                 max_tength=100,
+                 max_length=100,
                  max_sent_lenght=100,
                  stepwise_penalty=True,
                  length_penalty='none',
-                 covearge_penalty='none',
+                 coverage_penalty='none',
                  alpha=0.,
                  beta=-0.,
                  block_ngram_repeat=0.,
@@ -216,7 +216,7 @@ class TranslateOpts:
                  verbose=True,
                  log_file="",
                  attn_debug=False,
-                 dump_baem="",
+                 dump_beam="",
                  n_best=1,
                  batch_size=30,
                  gpu=-1,
@@ -241,11 +241,11 @@ class TranslateOpts:
         self.fast = fast
         self.beam_size = beam_size
         self.min_length = min_length
-        self.max_tength = max_tength
+        self.max_length = max_length
         self.max_sent_lenght = max_sent_lenght
         self.stepwise_penalty = stepwise_penalty
         self.length_penalty = length_penalty
-        self.covearge_penalty = covearge_penalty
+        self.coverage_penalty = coverage_penalty
         self.alpha = alpha
         self.beta = beta
         self.block_ngram_repeat = block_ngram_repeat
@@ -254,7 +254,7 @@ class TranslateOpts:
         self.verbose = verbose
         self.log_file = log_file
         self.attn_debug = attn_debug
-        self.dump_baem = dump_baem
+        self.dump_beam = dump_beam
         self.n_best = n_best
         self.batch_size = batch_size
         self.gpu = gpu
